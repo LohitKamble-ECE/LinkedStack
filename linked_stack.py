@@ -89,7 +89,9 @@ class LinkedStack:
         self._size: int = 0  # Number of stack items.
 
     def __len__(self: Self) -> int:
-        """Return the length the stack.
+        """Return the length the stack. Takes O(1) since explicitly maintaining
+        size object which increment and decreament according to push and pop
+        operation.
 
         Args:
             self (Self): An object.
@@ -111,7 +113,8 @@ class LinkedStack:
         return len(self) == 0
 
     def push(self: Self, item: Any) -> None:
-        """Add an item to the top of stack.
+        """Add an item to the top of stack. Takes O(1) as inserting an item at
+        the beginning of the singly linked list.
 
         Args:
             self (Self): An object.
@@ -121,7 +124,8 @@ class LinkedStack:
         self._size += 1
 
     def pop(self: Self) -> Any:
-        """Remove and return the item from top of the stack (i.e. LIFO).
+        """Remove and return the item from top of the stack (i.e. LIFO). Takes
+        O(1) as removing an item at the beginning of the singly linked list.
 
         Args:
             self (Self): An object.
@@ -140,7 +144,9 @@ class LinkedStack:
         return value
 
     def top(self: Self) -> Any:
-        """Return (but do not remove) the item at the top of the stack.
+        """Return (but do not remove) the item at the top of the stack. Takes
+        O(1) since no need to traverse the singly linked list as top of the
+        stack present at the beginning.
 
         Args:
             self (Self): An object.
