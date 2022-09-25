@@ -47,7 +47,7 @@ class LinkedStack:
                 Self | None: Return the reference to next node object in singly
                 linked list if exists, None otherwise.
             """
-            return self._link
+            return self.__link
 
         @_link.setter
         def _link(self: Self, link: Self | None) -> None:
@@ -68,6 +68,7 @@ class LinkedStack:
                     f"inappropriate type for the '_link': expecting either \
                     '{cls_name}' or '{None}' but got '{link_cls_name}'"
                 )
+            self.__link = link
 
         def __str__(self) -> str:
             """Implements str(self).
