@@ -78,3 +78,79 @@ class LinkedStack:
             """
             cls_name = self.__class__.__name__
             return f"<{cls_name} contains {self._val}>"
+
+    def __init__(self: Self) -> None:
+        """Create an empty stack.
+
+        Args:
+            self (Self): An object.
+        """
+        self._head: LinkedStack._Node | None = None  # Reference to head node.
+        self._size: int = 0  # Number of stack items.
+
+    def __len__(self: Self) -> int:
+        """Return the length the stack.
+
+        Args:
+            self (Self): An object.
+
+        Returns:
+            int: Number of items stored inside stack.
+        """
+        return self._size
+
+    def is_empty(self: Self) -> bool:
+        """Return True when stack is empty, False otherwise.
+
+        Args:
+            self (Self): An object.
+
+        Returns:
+            bool: Return True when stack is empty, False otherwise.
+        """
+        return len(self) == 0
+
+    def push(self: Self, item: Any) -> None:
+        """Add an item to the top of stack.
+
+        Args:
+            self (Self): An object.
+            item (Any): An item that need to be added.
+        """
+        self._head = self._Node(item, self._head)
+        self._size += 1
+
+    def pop(self: Self) -> Any:
+        """Remove and return the item from top of the stack (i.e. LIFO).
+
+        Args:
+            self (Self): An object.
+
+        Raises:
+            Exception: Tring to remove an item from empty stack.
+
+        Returns:
+            Any: Return top of the stack.
+        """
+        if self._head is None:  # Or self.is_empty()
+            raise Exception(f"cannot remove an item from an empty stack")
+        value = self._head._val
+        self._head = self._head._link
+        self._size -= 1
+        return value
+
+    def top(self: Self) -> Any:
+        """Return (but do not remove) the item at the top of the stack.
+
+        Args:
+            self (Self): An object.
+
+        Raises:
+            Exception: Trying to return an item from empty stack.
+
+        Returns:
+            Any: The most recent item inserted into the stack.
+        """
+        if self._head is None:  # Or self.is_empty()
+            raise Exception(f"cannot return an item from an empty stack")
+        return self._head._val
